@@ -1,0 +1,56 @@
+import random
+
+def chatbot_response(user_input):
+    """
+    A simple rule-based chatbot that gives responses 
+    based on keywords in user input.
+    """
+    # Convert user input to lowercase for easy matching
+    user_input = user_input.lower()
+    
+    # Greeting responses
+    greetings = ["hello", "hi", "hey", "good morning", "good evening"]
+    if any(word in user_input for word in greetings):
+        return random.choice([
+            "Hello! How can I help you today?",
+            "Hi there! What’s up?",
+            "Hey! How are you doing?"
+        ])
+    
+    # Asking about chatbot's name
+    if "your name" in user_input:
+        return "I’m chatpy, your Python chatbot assistant 🤖"
+    
+    # Asking about chatbot's age
+    if "your age" in user_input:
+        return "I was created recently, so I'm quite young in human years! 😉"
+    
+    # Asking about weather
+    if "weather" in user_input:
+        return "I can’t see outside, but you can check a weather app 🌤️"
+    
+    if "pandu" in user_input:
+        return "This is ur chatbot"
+    
+    # Farewell responses
+    farewells = ["bye", "goodbye", "see you", "exit", "quit"]
+    if any(word in user_input for word in farewells):
+        return "Goodbye! Have a great day! 👋"
+    
+    # Default fallback response
+    return "I’m not sure how to respond to that. Can you rephrase?"
+
+if __name__ == "__main__":
+    print("🤖 ChatPy: Hello! I’m your chatbot. Type 'bye' to quit.\n")
+    
+    while True:
+        user_input = input("You: ")
+        
+        # Check exit condition
+        if user_input.lower() in ["bye", "exit", "quit"]:
+            print("🤖chatpy: Goodbye! 👋")
+            break
+        
+        # Get chatbot response
+        response = chatbot_response(user_input)
+        print("🤖chatpy:", response)
